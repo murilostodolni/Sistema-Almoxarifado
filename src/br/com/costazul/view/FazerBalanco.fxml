@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.media.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.costazul.view.FazerBalancoController">
+   <children>
+      <AnchorPane prefHeight="600.0" prefWidth="800.0">
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="800.0" style="-fx-background-color: #E6E8FA;">
+               <children>
+                  <MenuBar prefWidth="800.0">
+                     <menus>
+                        <Menu fx:id="menuProdutos" mnemonicParsing="false" text="Produtos">
+                           <items>
+                              <MenuItem fx:id="btnNovoProduto" mnemonicParsing="false" onAction="#novoProduto" text="Novo" />
+                              <MenuItem fx:id="btnEntradaProduto" mnemonicParsing="false" onAction="#entradaProduto" text="Entrada" />
+                              <MenuItem fx:id="btnSaidaProduto" mnemonicParsing="false" onAction="#saidaProduto" text="Saída" />
+                              <MenuItem fx:id="btnPesquisaProdutos" mnemonicParsing="false" onAction="#pesquisarProduto" text="Pesquisar" />
+                              <MenuItem fx:id="btnAlterarProdutos" mnemonicParsing="false" onAction="#alterarProduto" text="Alterar" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Balanço">
+                           <items>
+                              <MenuItem fx:id="btnFazerBalanco" mnemonicParsing="false" onAction="#fazerBalanco" text="Fazer Balanço" />
+                           </items>
+                        </Menu>
+                        <Menu fx:id="menuRelatorios" mnemonicParsing="false" text="Relatórios">
+                           <items>
+                              <MenuItem fx:id="btnRelatorioProduto" mnemonicParsing="false" onAction="#relatorioProdutos" text="Produtos" />
+                              <MenuItem fx:id="btnRelatorioSaida" mnemonicParsing="false" onAction="#relatorioSaida" text="Saídas" />
+                              <MenuItem fx:id="btnRelatorioEntrada" mnemonicParsing="false" onAction="#relatorioEntrada" text="Entradas" />
+                              <MenuItem fx:id="btnRelatorioValores" mnemonicParsing="false" onAction="#relatorioValores" text="Produtos com Valores" />
+                              <MenuItem fx:id="btnRelatorioAcessos" mnemonicParsing="false" onAction="#relatorioAcessos" text="Acessos" />
+                           </items>
+                        </Menu>
+                        <Menu fx:id="menuUsuario" mnemonicParsing="false" text="Usuários">
+                           <items>
+                              <MenuItem fx:id="btnUsuario" mnemonicParsing="false" onAction="#usuario" text="Adicionar/Alterar/Excluir" />
+                           </items>
+                        </Menu>
+                     </menus>
+                  </MenuBar>
+                  <Text layoutX="315.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fazer Balanço">
+                     <font>
+                        <Font name="Arial Bold" size="25.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="txtCodigoProduto" alignment="CENTER" layoutX="100.0" layoutY="100.0" onKeyReleased="#buscarProduto" prefHeight="39.0" prefWidth="600.0" promptText="Código Produto">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </AnchorPane>
+            <Text fx:id="txtUsuario" layoutX="443.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuário:" wrappingWidth="54.341796875">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Text>
+            <Text fx:id="txtNomeUsuario" layoutX="499.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="290.341796875" />
+            <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="730.0" layoutY="2.0" onMouseClicked="#trocarUsuario" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../lb/001_57.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="767.0" onMouseClicked="#sair" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../lb/sair.png" />
+               </image>
+            </ImageView>
+            <TableView fx:id="tblListaProdutos" layoutX="25.0" layoutY="200.0" prefHeight="340.0" prefWidth="750.0">
+              <columns>
+                <TableColumn fx:id="columCodigo" prefWidth="167.0" text="CÓDIGO DE BARRA" />
+                  <TableColumn fx:id="columDescricao" prefWidth="367.0" text="DESCRIÇÃO" />
+                  <TableColumn fx:id="columQuantidade" minWidth="0.0" prefWidth="99.0" text="EM ESTOQUE" />
+                  <TableColumn fx:id="columValor" prefWidth="116.0" text="VALOR" />
+              </columns>
+            </TableView>
+            <Button fx:id="btnAdicionarProduto" layoutX="632.0" layoutY="561.0" mnemonicParsing="false" onAction="#adicionarProdutoBanco" prefHeight="25.0" prefWidth="143.0" style="-fx-background-color: #0040ff;" text="Gerar Relatório" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnRemover" layoutX="521.0" layoutY="564.0" mnemonicParsing="false" onAction="#remover" prefHeight="16.0" prefWidth="88.0" style="-fx-background-color: #FE2E2E;" text="Remover Item" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="9.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
