@@ -299,11 +299,12 @@ public class GeradorPdf {
 
 			document.add(new Paragraph(" "));
 
-			PdfPTable table = new PdfPTable(new float[] { 0.35f, 0.45f, 0.2f });
+			PdfPTable table = new PdfPTable(new float[] { 0.35f, 0.5f, 0.15f, 0.15f });
 
 			table.addCell("Código Barras");
 			table.addCell("Descrição");
-			table.addCell("Em estoque");
+			table.addCell("Sistema");
+			table.addCell("Estoque");
 
 			for (int i = 0; i < listaConferido.size(); i++) {
 				table.addCell(listaConferido.get(i));
@@ -314,7 +315,7 @@ public class GeradorPdf {
 			document.add(new Paragraph(" "));
 			document.add(new Paragraph(" "));
 
-			Paragraph p3 = new Paragraph("LISTA TOTAL DE PRODUTOS");
+			Paragraph p3 = new Paragraph("PRODUTOS EM ESTOQUE NÃO CONFERIDOS NO BALANÇO");
 
 			p3.setAlignment(Element.ALIGN_CENTER);
 
@@ -328,13 +329,15 @@ public class GeradorPdf {
 				info.add(listaNaoConferido.get(i).getCodigoBarra());
 				info.add(listaNaoConferido.get(i).getNomeProduto());
 				info.add(Integer.toString(listaNaoConferido.get(i).getTotalProdutos()));
+				info.add("?");
 			}
 
-			PdfPTable table1 = new PdfPTable(new float[] { 0.35f, 0.45f, 0.2f });
+			PdfPTable table1 = new PdfPTable(new float[] { 0.35f, 0.5f, 0.15f, 0.15f });
 
 			table1.addCell("Código Barras");
 			table1.addCell("Descrição");
-			table1.addCell("Quantidade");
+			table1.addCell("Sistema");
+			table1.addCell("Estoque");
 
 			for (int i = 0; i < info.size(); i++) {
 				table1.addCell(info.get(i));

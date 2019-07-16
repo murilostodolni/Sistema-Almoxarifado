@@ -5,11 +5,9 @@ import java.sql.SQLException;
 import br.com.costazul.service.UsuariosService;
 import br.com.costazul.sistema.Usuario;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 
 public class LoginController {
 
@@ -31,18 +29,21 @@ public class LoginController {
 			e.printStackTrace();
 		}
 
-		if (usuario.getLogin().equals(txtLogin.getText()) && usuario.getSenha().equals(txtSenha.getText())) {
-			try {
-				new IniciarCena("Menu", usuario, "Menu").start(MainView.stage);
-			} catch (Exception e) {
-				e.printStackTrace();
+		try {
+			// TODO caso queira sistema com senha, pegar string da cena e comparar com senha
+			// do usuario
+			if (usuario.getLogin().equals(txtLogin.getText())) {
+				try {
+					new IniciarCena("Menu", usuario, "Menu").start(MainView.stage);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
-		} else {
-			Alert alerta = new Alert(AlertType.ERROR);
-			alerta.setTitle("Erro!");
-			alerta.setHeaderText("Usuário e/ou senha não existe!");
-			alerta.show();
+
+		} catch (NullPointerException ex) {
+			System.out.println("Login incorreto");
 		}
+
 	}
 
 }

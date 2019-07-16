@@ -16,9 +16,8 @@
                   <Font name="Arial Black" size="36.0" />
                </font>
             </Text>
-            <TextField fx:id="txtLogin" layoutX="301.0" layoutY="300.0" prefHeight="25.0" prefWidth="198.0" promptText="Login" />
-            <PasswordField fx:id="txtSenha" layoutX="301.0" layoutY="346.0" prefHeight="25.0" prefWidth="198.0" promptText="Senha" />
-            <Button fx:id="btnEntrar" blendMode="SRC_ATOP" layoutX="350.0" layoutY="394.0" mnemonicParsing="false" onAction="#fazerLogin" prefHeight="25.0" prefWidth="101.0" text="Entrar" />
+            <TextField fx:id="txtLogin" layoutX="301.0" layoutY="311.0" onKeyReleased="#fazerLogin" prefHeight="25.0" prefWidth="198.0" promptText="Login" />
+            <Button fx:id="btnEntrar" blendMode="SRC_ATOP" layoutX="350.0" layoutY="394.0" mnemonicParsing="false" onAction="#fazerLogin" onKeyPressed="#fazerLogin" prefHeight="25.0" prefWidth="101.0" text="Entrar" />
          </children>
       </AnchorPane>
    </children>

@@ -306,15 +306,17 @@ public class FazerBalancoController {
 					e.printStackTrace();
 				}
 
-				int totalBanco = produto.getTotalProdutos();
-				int diferenca = listaBalanco.get(i).getTotalProdutos() - totalBanco;
+				/*int totalBanco = produto.getTotalProdutos();
+				int diferenca = listaBalanco.get(i).getTotalProdutos() - totalBanco;*/
 
 				stringBalanco.add(listaBalanco.get(i).getCodigoBarra());
 				stringBalanco.add(listaBalanco.get(i).getNomeProduto());
-				if (diferenca == 0)
+				/*if (diferenca == 0)
 					stringBalanco.add("OK");
 				else
-					stringBalanco.add(Integer.toString(diferenca));
+					stringBalanco.add(Integer.toString(diferenca));*/
+				stringBalanco.add(Integer.toString(produto.getTotalProdutos()));
+				stringBalanco.add(Integer.toString(listaBalanco.get(i).getTotalProdutos()));
 			}
 		}
 
